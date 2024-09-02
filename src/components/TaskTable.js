@@ -12,18 +12,16 @@ export default function TaskTable({ tasks, onTaskStatusChange, onTaskDelete, onT
   })
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </table>
   )
 }

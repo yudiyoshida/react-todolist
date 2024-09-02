@@ -36,15 +36,14 @@ export default function Board() {
     setData(data.filter(item => item.id !== id))
   }
 
-
   return (
     <div className="container">
       <TaskInput onClick={createTask}/>
       <TaskTable
         tasks={data}
         onTaskStatusChange={handleTaskStatusChange}
-        onTaskDelete={handleTaskDelete}
         onTaskUpdate={handleTaskUpdate}
+        onTaskDelete={handleTaskDelete}
       />
     </div>
   )
