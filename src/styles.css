@@ -1,0 +1,29 @@
+.container {
+  padding: 12px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container__input {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.container__input input {
+  flex-grow: 1;
+}
+
+.task p {
+  margin: 0.5rem 0;
+}
+
+.task :nth-child(2) {
+  width: 100%;
+}
+
+table, tr {
+  width: 100%;
+}
