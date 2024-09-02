@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import TaskInput from "./TaskInput";
 import TaskTable from "./TaskTable";
+
+export const ActionsContext = createContext();
 
 export default function Board() {
   const [data, setData] = useState([]);
@@ -37,14 +39,11 @@ export default function Board() {
   }
 
   return (
-    <div className="container">
-      <TaskInput onClick={createTask}/>
-      <TaskTable
-        tasks={data}
-        onTaskStatusChange={handleTaskStatusChange}
-        onTaskUpdate={handleTaskUpdate}
-        onTaskDelete={handleTaskDelete}
-      />
-    </div>
+    <ActionsContext.Provider value={{ handleTaskUpdate, handleTaskDelete, handleTaskStatusChange }}>
+      <div className="container">
+        <TaskInput onClick={createTask}/>
+        <TaskTable tasks={data} />
+      </div>
+    </ActionsContext.Provider>
   )
 }

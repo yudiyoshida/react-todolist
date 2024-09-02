@@ -1,18 +1,20 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { ActionsContext } from "./Board";
 
-export default function TaskRow({ task, onTaskStatusChange, onTaskDelete, onTaskUpdate }) {
+export default function TaskRow({ task }) {
+  const { handleTaskStatusChange, handleTaskDelete, handleTaskUpdate } = useContext(ActionsContext);
   const [isEditing, setIsEditing] = useState(false);
   const [taskTitle, setTaskTitle] = useState(task.title);
 
-  function handleTaskUpdate() {
+  function onTaskUpdate() {
     setIsEditing(!isEditing);
-    onTaskUpdate(task.id, taskTitle)
+    handleTaskUpdate(task.id, taskTitle)
   }
 
   return (
     <tr className="task">
       <td>
-        <input type="checkbox" checked={task.done} onChange={() => onTaskStatusChange(task.id)}></input>
+        <input type="checkbox" checked={task.done} onChange={() => handleTaskStatusChange(task.id)}></input>
       </td>
       <td>
         { isEditing 
@@ -22,12 +24,12 @@ export default function TaskRow({ task, onTaskStatusChange, onTaskDelete, onTask
       </td>
       <td>
         { isEditing
-          ? <button type="button" onClick={handleTaskUpdate}>Save</button>
+          ? <button type="button" onClick={onTaskUpdate}>Save</button>
           : <button type="button" onClick={() => setIsEditing(!isEditing)}>Edit</button>
         }
       </td>
       <td>
-        <button type="button" onClick={() => onTaskDelete(task.id)}>Delete</button>
+        <button type="button" onClick={() => handleTaskDelete(task.id)}>Delete</button>
       </td>
     </tr>
   )

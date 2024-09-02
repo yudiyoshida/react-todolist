@@ -1,14 +1,8 @@
 import TaskRow from "./TaskRow"
 
-export default function TaskTable({ tasks, onTaskStatusChange, onTaskDelete, onTaskUpdate }) {
+export default function TaskTable({ tasks }) {
   const rows = tasks.map(task => {
-    return <TaskRow
-      key={task.id}
-      task={task}
-      onTaskStatusChange={onTaskStatusChange}
-      onTaskDelete={onTaskDelete}
-      onTaskUpdate={onTaskUpdate}
-    />
+    return <TaskRow key={task.id} task={task} />
   })
 
   return (
